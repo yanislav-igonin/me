@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html className="dark">
       <Head>
-        <meta name="description" content="My NextJS Template" />
+        <meta name="description" content="Yanislav Igonin" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
