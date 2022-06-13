@@ -12,7 +12,7 @@ export const MainCard = () => <div className="p-20 shadow-md bg-white dark:bg-sl
     {renderTechs()}
   </ul>
   <div className='flex justify-center items-center mt-10'>
-    <a href="https://github.com/yanislav-igonin/nextjs-template" target="_blank" rel="noreferrer">
+    <a href="https://github.com/yanislav-igonin/me" target="_blank" rel="noreferrer">
       <GithubIcon />
     </a>
   </div>
