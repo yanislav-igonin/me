@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { DarkModeButton, Card, Header, Paragraph, GithubIcon } from '@components';
+import { DarkModeButton, Header, Paragraph, GithubIcon } from '@components';
+import Image from 'next/image';
 
 const Home: NextPage = () => {
   return <div>
@@ -12,16 +13,10 @@ const Home: NextPage = () => {
       <DarkModeButton />
     </div>
 
-    <main className="flex h-screen justify-center items-center bg-gradient-to-tr from-emerald-400 to-fuchsia-400 dark:from-emerald-600 dark:to-fuchsia-600">
-      <Card>
-        <Header text="What's up? I'm Yan." />
-        <Paragraph text="I'm a software engineer based in Israel. I'm currently working on a project called Next.js, which is a framework for building fast, responsive websites." />
-        <div className='flex justify-center items-center mt-10'>
-          <a href="https://github.com/yanislav-igonin/me" target="_blank" rel="noreferrer">
-            <GithubIcon />
-          </a>
-        </div>
-      </Card>
+    <main className="flex h-screen justify-center items-center dark:bg-slate-600">
+      <div className='w-96 h-96 relative'>
+        <Image layout='fill' src="/eblo.webp" alt="site owner's face" />
+      </div>
     </main>
   </div>;
 };
