@@ -14,7 +14,7 @@ const Home: NextPage = () => {
     </div>
 
     <main className="flex h-screen justify-center items-center dark:bg-slate-600">
-      <div className='w-96 h-96 relative'>
+      <div className='w-96 h-96 relative animate-spin-slow'>
         <Image layout='fill' src="/eblo.webp" alt="site owner's face" />
       </div>
     </main>
