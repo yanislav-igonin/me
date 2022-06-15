@@ -18,11 +18,12 @@ interface LinkProps {
   name: string;
 }
 
-const HeaderLink = ({ name, href }: LinkProps) => <li key={href} className="p-2">
-  <Link href={href}>
-    <a className="dark:text-white">{name}</a>
-  </Link>
-</li>;
+const HeaderLink = ({ name, href }: LinkProps) =>
+  <li key={href} className="p-2">
+    <Link href={href}>
+      <a className="dark:text-white">{name}</a>
+    </Link>
+  </li>;
 
 export const Header = () => <header className="absolute w-screen">
   <ul className="flex p-2">
