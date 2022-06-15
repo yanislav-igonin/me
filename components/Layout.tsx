@@ -7,7 +7,7 @@ interface Props {
 export const Layout = ({ children }: Props) => <>
   <Header />
   
-  <main className="flex h-screen justify-center items-center dark:bg-slate-600">
+  <main className="flex flex-col h-screen justify-center items-center dark:bg-slate-600">
     {children}
-  </main>;
+  </main>
 </>;
