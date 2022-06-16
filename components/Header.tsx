@@ -21,7 +21,11 @@ interface LinkProps {
 const HeaderLink = ({ name, href }: LinkProps) =>
   <li key={href} className="p-2">
     <Link href={href}>
-      <a className="dark:text-white">{name}</a>
+      <a className="text-lg 
+        dark:text-white
+        font-light
+        hover:text-sky-700
+        dark:hover:text-sky-300">{name}</a>
     </Link>
   </li>;
 
