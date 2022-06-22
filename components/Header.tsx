@@ -29,7 +29,7 @@ const HeaderLink = ({ name, href }: LinkProps) =>
     </Link>
   </li>;
 
-export const Header = () => <header className="absolute w-screen">
+export const Header = () => <header className="w-screen">
   <ul className="flex p-2">
     {pages.map((page) => <HeaderLink key={page.href} {...page} />)}
     <li className="p-2">
