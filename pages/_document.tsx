@@ -9,7 +9,8 @@ export default function Document() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <body>
+      <body className="bg-gradient-to-r from-pink-200 via-emerald-200 to-sky-300 
+        dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-400">
         <Main />
         <NextScript />
       </body>
