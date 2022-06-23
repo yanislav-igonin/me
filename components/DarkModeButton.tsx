@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useDarkMode, { ThemeMode } from '../utils/useDarkMode';
+import { useTheme, Theme } from '../utils';
 
 const lightModePath = <path
   strokeLinecap="round"
@@ -17,12 +17,12 @@ const lightColor = 'text-white';
 const darkColor = 'text-slate-600';
 
 export const DarkModeButton = () => {
-  const [theme, setTheme] = useDarkMode();
+  const [theme, setTheme] = useTheme();
   const [color, setColor] = useState(darkColor);
   const [path, setPath] = useState(lightModePath);
 
-  const isDarkNow = theme === ThemeMode.Dark;
-  const nextTheme = isDarkNow ? ThemeMode.Light : ThemeMode.Dark;
+  const isDarkNow = theme === Theme.Dark;
+  const nextTheme = isDarkNow ? Theme.Light : Theme.Dark;
 
   useEffect(() => {
     const nextPath = isDarkNow ? darkModePath : lightModePath;

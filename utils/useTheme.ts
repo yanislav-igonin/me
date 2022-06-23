@@ -1,16 +1,16 @@
 import { Dispatch, useEffect, useState } from 'react';
 
-export enum ThemeMode {
+export enum Theme {
   Light = 'light',
   Dark = 'dark',
 }
 
-function useDarkMode() {
+export const useTheme = () => {
   const isBrowser = typeof window !== 'undefined';
   const [theme, setTheme] = useState(
-    isBrowser ? localStorage.theme as ThemeMode : ThemeMode.Light
+    isBrowser ? localStorage.theme as Theme : Theme.Light
   );
-  const previousTheme = theme === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark;
+  const previousTheme = theme === Theme.Dark ? Theme.Light : Theme.Dark;
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -24,7 +24,5 @@ function useDarkMode() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 
-  return [theme, setTheme] as [ThemeMode, Dispatch<ThemeMode>];
+  return [theme, setTheme] as [Theme, Dispatch<Theme>];
 }
-
-export default useDarkMode;
