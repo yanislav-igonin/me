@@ -3,6 +3,6 @@
   "rules": {
     "semi": "error",
     "eol-last": "error",
-    "quotes": ["error", "single", { "avoidEscape": true }],
+    "quotes": ["error", "single", { "avoidEscape": true }]
   }
 }
