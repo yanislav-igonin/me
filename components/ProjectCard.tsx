@@ -8,7 +8,7 @@ interface Props {
   imgSrc: string;
 }
 export const ProjectCard = ({ title, text, imgSrc }: Props) =>
-  <div className="flex flex-col md:flex-row m-2 w-11/12 md:w-1/2 shadow-md bg-gray-100 dark:bg-slate-500 rounded-md">
+  <div className="flex flex-col md:flex-row m-2 w-11/12 md:w-1/2 shadow-md bg-opacity-80 dark:bg-opacity-80 bg-gray-100 dark:bg-slate-500 rounded-md">
     <div className="w-full md:w-2/6 flex justify-center">
       <Image src={imgSrc} alt={title} width="200px" height="200px" />
     </div>
