@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { DarkModeButton } from './DarkModeButton';
-import { GithubIcon } from '../icons';
+import { GithubIcon, LinkedInIcon } from '../icons';
 
 const pages: LinkProps[] = [{
   name: 'Home',
@@ -35,6 +35,11 @@ export const Header = () => <header className="w-screen">
     <li className="p-2">
       <a href="https://github.com/yanislav-igonin/me" target="_blank" rel="noopener noreferrer">
         <GithubIcon />
+      </a>
+    </li>
+    <li className="p-2">
+      <a href="https://www.linkedin.com/in/yanislav-igonin" target="_blank" rel="noopener noreferrer">
+        <LinkedInIcon />
       </a>
     </li>
     <li className="absolute right-0 pr-2">
