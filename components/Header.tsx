@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { DarkModeButton } from './DarkModeButton';
-import { GithubIcon } from './GithubIcon';
+import { GithubIcon } from '../icons';
 
 const pages: LinkProps[] = [{
   name: 'Home',
