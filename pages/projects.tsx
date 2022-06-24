@@ -10,7 +10,7 @@ const project = [{
   live: 'https://micrach.igonin.dev/',
 }, {
   title: 'Face Fucker Bot',
-  text: 'Bot for Telegram that users LQR to shakalize images.',
+  text: 'Telegram bot that users LQR to shakalize images.',
   imgSrc: '/ok.png',
   github: 'https://github.com/yanislav-igonin/face-fucker-bot',
   live: 'https://t.me/face_fucker_bot',
