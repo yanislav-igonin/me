@@ -30,7 +30,7 @@ const HeaderLink = ({ name, href }: LinkProps) =>
   </li>;
 
 export const Header = () => <header className="w-screen fixed">
-  <ul className="flex p-2">
+  <ul className="flex p-2 items-start flex-wrap">
     {pages.map((page) => <HeaderLink key={page.href} {...page} />)}
     <li className="p-2">
       <a href="https://github.com/yanislav-igonin/me" target="_blank" rel="noopener noreferrer">
