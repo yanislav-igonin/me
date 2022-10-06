@@ -9,7 +9,7 @@ type Props = {
   live: string;
 }
 export const ProjectCard = ({ title, text, github, live }: Props) =>
-  <div className="mb-2 p-2 w-11/12 md:w-1/2 shadow-md 80 bg-white dark:bg-slate-500 rounded-md">
+  <div className="mb-2 p-2 w-11/12 md:w-1/2 shadow-md 80 bg-white dark:bg-slate-500 rounded-md hover:scale-150 duration-100">
     <div className="w-full p-4">
       <div className='text-center'>
         <Heading text={title} />
