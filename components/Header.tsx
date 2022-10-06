@@ -24,8 +24,8 @@ const HeaderLink = ({ name, href }: LinkProps) =>
       <a className="text-lg 
         dark:text-white
         font-bold
-        hover:text-sky-700
-        dark:hover:text-sky-300">{name}</a>
+        hover:text-rose-500
+        dark:hover:text-rose-500">{name}</a>
     </Link>
   </li>;
 
