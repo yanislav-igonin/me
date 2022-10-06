@@ -23,7 +23,7 @@ const HeaderLink = ({ name, href }: LinkProps) =>
     <Link href={href}>
       <a className="text-lg 
         dark:text-white
-        font-light
+        font-bold
         hover:text-sky-700
         dark:hover:text-sky-300">{name}</a>
     </Link>
