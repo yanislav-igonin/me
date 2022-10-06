@@ -1,19 +1,27 @@
-import Image from 'next/image';
 import { Heading } from './Heading';
+import { ExternalLink, GithubIcon } from './icons';
 import { Paragraph } from './Paragraph';
 
 type Props = {
   title: string;
   text: string;
+  github: string;
+  live: string;
 }
-export const ProjectCard = ({ title, text }: Props) =>
-  <div className="flex flex-col mb-2 p-2 w-11/12 md:w-1/2 shadow-md 80 bg-white dark:bg-slate-500 rounded-md">
-    <div className="w-full p-2 text-center md:text-left">
+export const ProjectCard = ({ title, text, github, live }: Props) =>
+  <div className="mb-2 p-2 w-11/12 md:w-1/2 shadow-md 80 bg-white dark:bg-slate-500 rounded-md">
+    <div className="w-full p-4">
       <div className='text-center'>
         <Heading text={title} />
         <Paragraph text={text} />
       </div>
-      <div className="text-justify">
+      <div className='flex flex-row items-center justify-evenly w-full mt-6'>
+        <a href={github} target="_blank" rel="noopener noreferrer">
+          <GithubIcon />
+        </a>
+        <a href={live} target="_blank" rel="noopener noreferrer">
+          <ExternalLink />
+        </a>
       </div>
     </div>
   </div>;
