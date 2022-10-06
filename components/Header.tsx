@@ -13,7 +13,7 @@ const pages: LinkProps[] = [{
   href: '/projects'
 }];
 
-interface LinkProps {
+type LinkProps = {
   href: string;
   name: string;
 }

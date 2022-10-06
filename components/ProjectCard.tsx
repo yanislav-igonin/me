@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Heading } from './Heading';
 import { Paragraph } from './Paragraph';
 
-interface Props {
+type Props = {
   title: string;
   text: string;
   imgSrc: string;

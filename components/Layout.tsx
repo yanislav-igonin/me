@@ -1,6 +1,6 @@
 import { Header } from './Header';
 
-interface Props {
+type Props = {
   children: React.ReactNode;
 }
 
