@@ -9,7 +9,7 @@ const Home: NextPage = () => <div>
   </Head>
 
   <Layout>
-    <div className="mb-4">
+    <div className="mb-4 text-center">
       <Heading text="What's up guys?" />
     </div>
 
