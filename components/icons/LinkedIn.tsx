@@ -1,5 +1,5 @@
 export const LinkedInIcon = () => <svg xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 46 48"
+  viewBox="1 1 48 48"
   className="dark:fill-white hover:fill-rose-500 dark:hover:fill-rose-500"
   width="34"
   height="34">
