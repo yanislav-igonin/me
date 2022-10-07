@@ -1,6 +1,9 @@
 .layout {
   background: linear-gradient(#00000000 60%, #ff9057fa 0%, #00000000 75%)
 }
+html:global(.dark) .layout {
+  background: linear-gradient(#00000000 60%, #ff02bcb5 0%, #00000000 75%)
+}
 
 .wrapper {
   z-index: -1;
@@ -31,6 +34,9 @@
   background-position: -1px -1px, -1px -1px;
   transform: rotateX(85deg);
   animation: moveUp 1s infinite linear;
+}
+html:global(.dark) .landscape {
+  background-image: -webkit-linear-gradient(top, #CF33D9 2px, transparent 2px), -webkit-linear-gradient(left, #CF33D9 2px, transparent 2px);
 }
 
 @keyframes moveUp{
