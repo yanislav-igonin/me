@@ -13,7 +13,7 @@ const Home: NextPage = () => <div>
       <Heading text="What's up guys?" />
     </div>
 
-    <div className='w-60 h-60 md:w-96 md:h-96 relative animate-spin-slow'>
+    <div className='w-60 h-60 md:w-72 md:h-72 relative animate-spin-slow'>
       <Image layout='fill' src="/eblo.webp" alt="site owner's face" />
     </div>
   </Layout>
