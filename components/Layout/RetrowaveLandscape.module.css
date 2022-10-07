@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+ 
+.innerWrapper {
+  width: 200%;
+  height: 100%;
+  position: fixed;
+  margin: 0 auto;
+  perspective: 360px;
+  perspective-origin: 50% 50%;
+}
+ 
+.landscape {
+  position: absolute;
+  width: 250%;
+  left: -80%;
+  height: 120%;
+  bottom: -40%;
+  background-image: -webkit-linear-gradient(top, #cc5858 2px, transparent 2px), -webkit-linear-gradient(left, #cc5858 2px, transparent 2px);
+  background-size: 50px 50px, 80px 80px;
+  background-position: -1px -1px, -1px -1px;
+  transform: rotateX(85deg);
+  animation: moveUp 1s infinite linear;
+}
+html:global(.dark) .landscape {
+  background-image: -webkit-linear-gradient(top, #CF33D9 2px, transparent 2px), -webkit-linear-gradient(left, #CF33D9 2px, transparent 2px);
+}
+
+@keyframes moveUp{
+  0% {
+    background-position: -1px -1px, -1px -1px;
+  }
+  100% {
+    background-position: -50px -50px, -1px -1px;
+  }
+}

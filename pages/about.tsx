@@ -13,7 +13,7 @@ const About: NextPage = () => <div>
       <Heading text="About? How about NO?" />
     </div>
 
-    <div className='w-60 h-60 md:w-96 md:h-96 relative animate-spin-slow'>
+    <div className='w-60 h-60 md:w-72 md:h-72 relative animate-spin-slow'>
       <Image layout='fill' src="/ok.png" alt="site owner's face" />
     </div>
   </Layout>

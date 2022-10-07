@@ -9,10 +9,7 @@ module.exports = {
       animation: {
         'spin-slow': 'spin 1.5s linear infinite',
       },
-      backgroundImage: {
-        'pattern': "url('/pattern.svg')",
-      }
-    }
+    },
   },
   plugins: [],
   darkMode: 'class',
