@@ -1,4 +1,4 @@
-import { Header } from './Header';
+import { Header } from '../Header';
 import { RetrowaveSun } from './RetrowaveSun';
 import s from './Layout.module.css';
 
