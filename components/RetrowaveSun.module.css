@@ -1,0 +1,163 @@
+.sun {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vh;
+  height: 50vh;
+  border-radius: 50%;
+}
+
+.sun::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: fadeIn 1s easeIn;
+  opacity: 1;
+  transform: scale(1.6);
+}
+  
+.lines {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 0.9;
+}
+    
+.line {
+  width: 100%;
+  position: relative;
+  height: 1.4%;
+  margin-bottom: 0.6%;
+  background: #fff;
+}
+
+.line:nth-child(1) {
+  animation: rotateLine 4s calc(1 * 0.2s) infinite;
+}
+.line:nth-child(2) {
+  animation: rotateLine 4s calc(2 * 0.2s) infinite;
+}
+.line:nth-child(3) {
+  animation: rotateLine 4s calc(3 * 0.2s) infinite;
+}
+.line:nth-child(4) {
+  animation: rotateLine 4s calc(4 * 0.2s) infinite;
+}
+.line:nth-child(5) {
+  animation: rotateLine 4s calc(5 * 0.2s) infinite;
+}
+.line:nth-child(6) {
+  animation: rotateLine 4s calc(6 * 0.2s) infinite;
+}
+.line:nth-child(7) {
+  animation: rotateLine 4s calc(7 * 0.2s) infinite;
+}
+.line:nth-child(8) {
+  animation: rotateLine 4s calc(8 * 0.2s) infinite;
+}
+.line:nth-child(9) {
+  animation: rotateLine 4s calc(9 * 0.2s) infinite;
+}
+.line:nth-child(10) {
+  animation: rotateLine 4s calc(10 * 0.2s) infinite;
+}
+
+.line:nth-child(11) {
+  animation: rotateLine 4s calc(11 * 0.2s) infinite;
+}
+.line:nth-child(12) {
+  animation: rotateLine 4s calc(12 * 0.2s) infinite;
+}
+.line:nth-child(13) {
+  animation: rotateLine 4s calc(13 * 0.2s) infinite;
+}
+.line:nth-child(14) {
+  animation: rotateLine 4s calc(14 * 0.2s) infinite;
+}
+.line:nth-child(15) {
+  animation: rotateLine 4s calc(15 * 0.2s) infinite;
+}
+.line:nth-child(16) {
+  animation: rotateLine 4s calc(16 * 0.2s) infinite;
+}
+.line:nth-child(17) {
+  animation: rotateLine 4s calc(17 * 0.2s) infinite;
+}
+.line:nth-child(18) {
+  animation: rotateLine 4s calc(18 * 0.2s) infinite;
+}
+.line:nth-child(19) {
+  animation: rotateLine 4s calc(19 * 0.2s) infinite;
+}
+.line:nth-child(20) {
+  animation: rotateLine 4s calc(20 * 0.2s) infinite;
+}
+
+.line:nth-child(21) {
+  animation: rotateLine 4s calc(21 * 0.2s) infinite;
+}
+.line:nth-child(22) {
+  animation: rotateLine 4s calc(22 * 0.2s) infinite;
+}
+.line:nth-child(23) {
+  animation: rotateLine 4s calc(23 * 0.2s) infinite;
+}
+.line:nth-child(24) {
+  animation: rotateLine 4s calc(24 * 0.2s) infinite;
+}
+.line:nth-child(25) {
+  animation: rotateLine 4s calc(25 * 0.2s) infinite;
+}
+.line:nth-child(26) {
+  animation: rotateLine 4s calc(26 * 0.2s) infinite;
+}
+.line:nth-child(27) {
+  animation: rotateLine 4s calc(27 * 0.2s) infinite;
+}
+.line:nth-child(28) {
+  animation: rotateLine 4s calc(28 * 0.2s) infinite;
+}
+.line:nth-child(29) {
+  animation: rotateLine 4s calc(29 * 0.2s) infinite;
+}
+.line:nth-child(30) {
+  animation: rotateLine 4s calc(30 * 0.2s) infinite;
+}
+
+.line:nth-child(31) {
+  animation: rotateLine 4s calc(31 * 0.2s) infinite;
+}
+.line:nth-child(32) {
+  animation: rotateLine 4s calc(32 * 0.2s) infinite;
+}
+.line:nth-child(33) {
+  animation: rotateLine 4s calc(33 * 0.2s) infinite;
+}
+.line:nth-child(34) {
+  animation: rotateLine 4s calc(34 * 0.2s) infinite;
+}
+.line:nth-child(35) {
+  animation: rotateLine 4s calc(35 * 0.2s) infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rotateLine {
+  0% { transform: rotateX(0deg); }
+  60% { transform: rotateX(60deg); }
+  90% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0deg); }
+}

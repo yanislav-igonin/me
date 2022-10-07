@@ -1,4 +1,5 @@
 import { Header } from './Header';
+import { RetrowaveSun } from './RetrowaveSun';
 import s from './Layout.module.css';
 
 type Props = {
@@ -15,6 +16,8 @@ export const Layout = ({ children }: Props) =>
         <div className={s.innerWrapper}>
           <div className={s.landscape}></div>
         </div>
+
+        <RetrowaveSun />
       </div>
 
       {children}
