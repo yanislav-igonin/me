@@ -15,7 +15,7 @@ export const Layout = ({ children }: Props) =>
         <div className={s.innerWrapper}>
           <div className={s.landscape}></div>
         </div>
-      </div>npm
+      </div>
 
       {children}
     </main>
