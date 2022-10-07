@@ -40,112 +40,112 @@
 }
 
 .line:nth-child(1) {
-  animation: rotateLine 4s calc(1 * 0.2s) infinite;
+  animation: rotateLine 4s 0.2s infinite;
 }
 .line:nth-child(2) {
-  animation: rotateLine 4s calc(2 * 0.2s) infinite;
+  animation: rotateLine 4s 0.4s infinite;
 }
 .line:nth-child(3) {
-  animation: rotateLine 4s calc(3 * 0.2s) infinite;
+  animation: rotateLine 4s 0.6s infinite;
 }
 .line:nth-child(4) {
-  animation: rotateLine 4s calc(4 * 0.2s) infinite;
+  animation: rotateLine 4s 0.8s infinite;
 }
 .line:nth-child(5) {
-  animation: rotateLine 4s calc(5 * 0.2s) infinite;
+  animation: rotateLine 4s 1s infinite;
 }
 .line:nth-child(6) {
-  animation: rotateLine 4s calc(6 * 0.2s) infinite;
+  animation: rotateLine 4s 1.2s infinite;
 }
 .line:nth-child(7) {
-  animation: rotateLine 4s calc(7 * 0.2s) infinite;
+  animation: rotateLine 4s 1.4s infinite;
 }
 .line:nth-child(8) {
-  animation: rotateLine 4s calc(8 * 0.2s) infinite;
+  animation: rotateLine 4s 1.6s infinite;
 }
 .line:nth-child(9) {
-  animation: rotateLine 4s calc(9 * 0.2s) infinite;
+  animation: rotateLine 4s 1.8s infinite;
 }
 .line:nth-child(10) {
-  animation: rotateLine 4s calc(10 * 0.2s) infinite;
+  animation: rotateLine 4s 2s infinite;
 }
 
 .line:nth-child(11) {
-  animation: rotateLine 4s calc(11 * 0.2s) infinite;
+  animation: rotateLine 4s 2.2s infinite;
 }
 .line:nth-child(12) {
-  animation: rotateLine 4s calc(12 * 0.2s) infinite;
+  animation: rotateLine 4s 2.4s infinite;
 }
 .line:nth-child(13) {
-  animation: rotateLine 4s calc(13 * 0.2s) infinite;
+  animation: rotateLine 4s 2.6s infinite;
 }
 .line:nth-child(14) {
-  animation: rotateLine 4s calc(14 * 0.2s) infinite;
+  animation: rotateLine 4s 2.8s infinite;
 }
 .line:nth-child(15) {
-  animation: rotateLine 4s calc(15 * 0.2s) infinite;
+  animation: rotateLine 4s 3s infinite;
 }
 .line:nth-child(16) {
-  animation: rotateLine 4s calc(16 * 0.2s) infinite;
+  animation: rotateLine 4s 3.2s infinite;
 }
 .line:nth-child(17) {
-  animation: rotateLine 4s calc(17 * 0.2s) infinite;
+  animation: rotateLine 4s 3.4s infinite;
 }
 .line:nth-child(18) {
-  animation: rotateLine 4s calc(18 * 0.2s) infinite;
+  animation: rotateLine 4s 3.6s infinite;
 }
 .line:nth-child(19) {
-  animation: rotateLine 4s calc(19 * 0.2s) infinite;
+  animation: rotateLine 4s 3.8s infinite;
 }
 .line:nth-child(20) {
-  animation: rotateLine 4s calc(20 * 0.2s) infinite;
+  animation: rotateLine 4s 4s infinite;
 }
 
 .line:nth-child(21) {
-  animation: rotateLine 4s calc(21 * 0.2s) infinite;
+  animation: rotateLine 4s 4.2s infinite;
 }
 .line:nth-child(22) {
-  animation: rotateLine 4s calc(22 * 0.2s) infinite;
+  animation: rotateLine 4s 4.4s infinite;
 }
 .line:nth-child(23) {
-  animation: rotateLine 4s calc(23 * 0.2s) infinite;
+  animation: rotateLine 4s 4.6s infinite;
 }
 .line:nth-child(24) {
-  animation: rotateLine 4s calc(24 * 0.2s) infinite;
+  animation: rotateLine 4s 4.8s infinite;
 }
 .line:nth-child(25) {
-  animation: rotateLine 4s calc(25 * 0.2s) infinite;
+  animation: rotateLine 4s 5s infinite;
 }
 .line:nth-child(26) {
-  animation: rotateLine 4s calc(26 * 0.2s) infinite;
+  animation: rotateLine 4s 5.2s infinite;
 }
 .line:nth-child(27) {
-  animation: rotateLine 4s calc(27 * 0.2s) infinite;
+  animation: rotateLine 4s 5.4s infinite;
 }
 .line:nth-child(28) {
-  animation: rotateLine 4s calc(28 * 0.2s) infinite;
+  animation: rotateLine 4s 5.6s infinite;
 }
 .line:nth-child(29) {
-  animation: rotateLine 4s calc(29 * 0.2s) infinite;
+  animation: rotateLine 4s 5.8s infinite;
 }
 .line:nth-child(30) {
-  animation: rotateLine 4s calc(30 * 0.2s) infinite;
+  animation: rotateLine 4s 6s infinite;
 }
 
 .line:nth-child(31) {
-  animation: rotateLine 4s calc(31 * 0.2s) infinite;
+  animation: rotateLine 4s 6.2s infinite;
 }
 .line:nth-child(32) {
-  animation: rotateLine 4s calc(32 * 0.2s) infinite;
+  animation: rotateLine 4s 6.4s infinite;
 }
 .line:nth-child(33) {
-  animation: rotateLine 4s calc(33 * 0.2s) infinite;
+  animation: rotateLine 4s 6.6s infinite;
 }
 .line:nth-child(34) {
-  animation: rotateLine 4s calc(34 * 0.2s) infinite;
+  animation: rotateLine 4s 6.8s infinite;
 }
 .line:nth-child(35) {
-  animation: rotateLine 4s calc(35 * 0.2s) infinite;
+  animation: rotateLine 4s 7s infinite;
 }
 
 @keyframes rotateLine {
