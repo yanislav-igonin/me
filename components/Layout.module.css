@@ -1,8 +1,10 @@
 .layout {
-  background: linear-gradient(#00000000 40%, #ff9057fa 41%, #00000000 60%);
+  background: linear-gradient(#00000000 60%, #ff9057fa 0%, #00000000 75%)
 }
 
 .wrapper {
+  z-index: -1;
+  position:fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,8 +24,8 @@
   position: absolute;
   width: 250%;
   left: -80%;
-  height: 130%;
-  bottom: -30%;
+  height: 100%;
+  bottom: -40%;
   background-image: -webkit-linear-gradient(top, #cc5858 2px, transparent 2px), -webkit-linear-gradient(left, #cc5858 2px, transparent 2px);
   background-size: 50px 50px, 80px 80px;
   background-position: -1px -1px, -1px -1px;

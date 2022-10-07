@@ -10,12 +10,13 @@ export const Layout = ({ children }: Props) =>
     <Header />
 
     <main className={`${s.layout} flex flex-col h-screen justify-center items-center`}>
-      {children}
-
+      {/* Retrowave Landscape */}
       <div className={s.wrapper}>
         <div className={s.innerWrapper}>
           <div className={s.landscape}></div>
         </div>
-      </div>
+      </div>npm
+
+      {children}
     </main>
   </div>;
