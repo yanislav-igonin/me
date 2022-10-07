@@ -25,4 +25,4 @@ export const useTheme = () => {
   }, [theme]);
 
   return [theme, setTheme] as [Theme, Dispatch<Theme>];
-}
+};
