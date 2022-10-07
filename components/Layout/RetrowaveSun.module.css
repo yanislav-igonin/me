@@ -16,7 +16,6 @@
   bottom: 0;
   border-radius: 50%;
   filter: blur(40px);
-  animation: fadeIn 1s easeIn;
   opacity: 1;
   transform: scale(1.6);
 }
@@ -147,11 +146,6 @@
 }
 .line:nth-child(35) {
   animation: rotateLine 4s calc(35 * 0.2s) infinite;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 @keyframes rotateLine {
