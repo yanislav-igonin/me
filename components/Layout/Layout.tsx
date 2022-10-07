@@ -16,7 +16,8 @@ export const Layout = ({ children }: Props) =>
         <div className={s.innerWrapper}>
           <div className={s.landscape}></div>
         </div>
-
+      </div>
+      <div className='-z-10'>
         <RetrowaveSun />
       </div>
 
