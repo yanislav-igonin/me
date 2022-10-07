@@ -5,6 +5,7 @@ const lines = Array.from({ length: linesCount }, (_, i) => i + 1);
 
 export const RetrowaveSun = () => <div className={s.sun}>
   <div className={s.lines}>
-    {lines.map((line) => <div key={line} className={s.line} />)}
+    {lines.map((line) => <div key={line}
+      className={`bg-white dark:bg-orange-400 ${s.line}`} />)}
   </div>
 </div>;

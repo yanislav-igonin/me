@@ -10,7 +10,7 @@ export default function Document() {
       </Head>
 
       <body className="bg-gradient-to-b from-rose-300 to-orange-200
-        dark:bg-gradient-to-r dark:from-emerald-700 dark:to-teal-900">
+        dark:bg-gradient-to-b dark:from-purple-900 dark:to-stone-800">
         <Main />
         <NextScript />
       </body>
