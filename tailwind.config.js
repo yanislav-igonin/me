@@ -9,7 +9,7 @@ module.exports = {
       animation: {
         'spin-slow': 'spin 1.5s linear infinite',
       },
-    }
+    },
   },
   plugins: [],
   darkMode: 'class',
