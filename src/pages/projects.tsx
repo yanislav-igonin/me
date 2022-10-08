@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Layout, ProjectCard } from '@components';
+import { Layout, ProjectCard } from '@/components';
 
 const project = [{
   title: 'Micrach',

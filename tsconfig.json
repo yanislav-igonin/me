@@ -15,10 +15,10 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@components": ["components"],
-      "@components/*": ["components/*"]
+      "@/components": ["components"],
+      "@/components/*": ["components/*"]
     },
-    "baseUrl": "./",
+    "baseUrl": "./src",
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
