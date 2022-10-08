@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Layout, ProjectCard } from '@/components';
+import { ProjectCard } from '@/components';
 
 const project = [{
   title: 'Micrach',
@@ -14,14 +14,14 @@ const project = [{
   live: 'https://t.me/face_fucker_bot',
 }];
 
-const Projects: NextPage = () => <div>
+const Projects: NextPage = () => <>
   <Head>
-    <title>Yanislav Igonin</title>
+    <title>Projects</title>
   </Head>
 
-  <Layout>
+  <div className='flex flex-col h-screen justify-center items-center'>
     {project.map((p) => <ProjectCard key={p.title} {...p} />)}
-  </Layout>
-</div>;
+  </div>
+</>;
 
 export default Projects;
