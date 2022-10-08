@@ -1,5 +1,5 @@
 import { Heading } from './Heading';
-import { ExternalLink, GithubIcon } from './icons';
+import { ExternalLink, GithubIcon } from './Icons';
 import { Paragraph } from './Paragraph';
 
 type Props = {
