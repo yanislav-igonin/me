@@ -16,6 +16,9 @@ export const Layout = ({ children }: Props) =>
         <RetrowaveLandscape />
         <RetrowaveSun />
       </div>
+      <div className='fixed w-screen h-screen top-0 -z-20
+        bg-gradient-to-b from-rose-300 to-orange-200
+        dark:bg-gradient-to-b dark:from-purple-900 dark:to-stone-800' />
       
       {children}
     </main>
