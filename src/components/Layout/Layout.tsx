@@ -11,11 +11,9 @@ export const Layout = ({ children }: Props) =>
   <div>
     <Header />
 
-    <main className={`${s.layout} flex h-screen justify-center items-center`}>
-      <div className='-z-10 fixed'>
+    <main className={'flex h-screen justify-center items-center'}>
+      <div className={`${s.background} fixed -z-10 w-screen h-screen`}>
         <RetrowaveLandscape />
-      </div>
-      <div className='-z-10'>
         <RetrowaveSun />
       </div>
       
