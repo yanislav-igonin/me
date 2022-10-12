@@ -3,6 +3,11 @@ import Head from 'next/head';
 import { ProjectCard } from '@/components';
 
 const project = [{
+  title: 'IP Crawler',
+  text: 'List of live IP addresses that updates in real-time.',
+  github: 'https://github.com/yanislav-igonin/ip-crawler-frontend',
+  live: 'https://ips.h0b0.dev/',
+}, {
   title: 'Micrach',
   text: 'Single board imageboard',
   github: 'https://github.com/yanislav-igonin/micrach',
