@@ -3,6 +3,7 @@ import { RetrowaveSun } from './RetrowaveSun';
 import s from './Layout.module.css';
 import { RetrowaveLandscape } from './RetrowaveLandscape';
 import Head from 'next/head';
+import { Metatags } from './Metatags';
 
 type Props = {
   children: React.ReactNode;
@@ -11,7 +12,7 @@ type Props = {
 export const Layout = ({ children }: Props) =>
   <div>
     <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <Metatags />
     </Head>
 
     <Header />
