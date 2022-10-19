@@ -5,3 +5,4 @@ export * from './Paragraph';
 export * from './Layout';
 export * from './ProjectCard';
 export * from './Icons';
+export * from './Analytics';
