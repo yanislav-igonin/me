@@ -20,12 +20,12 @@ type LinkProps = {
 
 const HeaderLink = ({ name, href }: LinkProps) =>
   <li key={href} className="p-2">
-    <Link href={href}>
-      <a className="text-lg 
-        dark:text-white
-        font-bold
-        hover:text-rose-500
-        dark:hover:text-rose-500">{name}</a>
+    <Link href={href} className="text-lg 
+      dark:text-white
+      font-bold
+      hover:text-rose-500
+      dark:hover:text-rose-500">
+      {name}
     </Link>
   </li>;
 
