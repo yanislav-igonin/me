@@ -5,6 +5,7 @@ import { RetrowaveLandscape } from './RetrowaveLandscape';
 import Head from 'next/head';
 import { Metatags } from './Metatags';
 import { Canvas } from '../Canvas';
+import { synthwaveLandscape } from '../Animations/landscape';
 
 type Props = {
   children: React.ReactNode;
@@ -27,7 +28,7 @@ export const Layout = ({ children }: Props) =>
         bg-gradient-to-b from-rose-300 to-orange-200
         dark:bg-gradient-to-b dark:from-purple-900 dark:to-stone-800' /> */}
 
-      <Canvas className='absolute top-0' draw={(ctx, frameCount) => {}} />
+      <Canvas className='absolute top-0 -z-10' draw={synthwaveLandscape} />
 
       {children}
     </main>
