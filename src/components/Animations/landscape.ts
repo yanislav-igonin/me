@@ -32,7 +32,7 @@ class Line {
 
   update() {
     const canvasHalf = this.canvasHeight / 2;
-    if (canvasHalf < this.y - 10) {
+    if (canvasHalf > this.y - 10) {
       this.y = this.canvasHeight;
       return;
     }
@@ -40,7 +40,9 @@ class Line {
   }
 }
 
-const lineCount = 1;
+const lineCount = 10;
+
+let lines: Line[] = [];
 
 export const synthwaveLandscape = (ctx: CanvasRenderingContext2D, frameCount: number) => {
   const height = ctx.canvas.height;
@@ -49,15 +51,15 @@ export const synthwaveLandscape = (ctx: CanvasRenderingContext2D, frameCount: nu
   ctx.clearRect(0, 0, width, height);
   ctx.strokeStyle = 'black';
 
-  const mod = frameCount % lineCount;
-
   const halfHeight = height / 2;
   const betweenLines = halfHeight / lineCount;
 
-  const lines = Array.from({ length: lineCount }, (_, i) => {
-    const y = height - (i * betweenLines);
-    return new Line({ y, canvasHeight: height, canvasWidth: width });
-  });
+  if (lines.length === 0){
+    lines = Array.from({ length: lineCount }, (_, i) => {
+      const y = height - (i * betweenLines);
+      return new Line({ y, canvasHeight: height, canvasWidth: width });
+    });
+  }
 
   lines.forEach((line) => {
     line.draw(ctx);
