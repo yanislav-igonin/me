@@ -36,7 +36,7 @@ class Line {
       this.y = this.canvasHeight;
       return;
     }
-    this.y -= 10;
+    this.y -= 2;
   }
 }
 
