@@ -1,3 +1,15 @@
+type Point = {
+  x: number;
+  y: number;
+};
+
+const drawLine = (ctx: CanvasRenderingContext2D, from: Point, to: Point) => {
+  ctx.beginPath();
+  ctx.moveTo(from.x, from.y);
+  ctx.lineTo(to.x, to.y);
+  ctx.stroke();
+};
+
 type LineProps ={
   y: number;
   canvasHeight: number;
@@ -12,7 +24,9 @@ class Line {
   }
 
   draw(ctx: CanvasRenderingContext2D) {
-    ctx.lineTo(0, this.y);
+    const from = { x: 0, y: this.y };
+    const to = { x: ctx.canvas.width, y: this.y };
+    drawLine(ctx, from, to);
   }
 
   update() {
@@ -25,16 +39,24 @@ class Line {
   }
 }
 
+const lineCount = 40;
+
 export const synthwaveLandscape = (ctx: CanvasRenderingContext2D, frameCount: number) => {
   const height = ctx.canvas.height;
-  let width = ctx.canvas.width;
-  // line from bottom to center
-  ctx.beginPath();
-  ctx.moveTo(0, height);
+  const width = ctx.canvas.width;
+  
+  ctx.clearRect(0, 0, width, height);
+  ctx.strokeStyle = 'black';
 
-  // while (true) {
-    // const line = new Line({ y: height, canvasHeight: height });
-    // line.draw(ctx);
-    // line.update();
-  // }
+  const mod = frameCount % lineCount;
+
+  const lines = Array.from({ length: lineCount }, (_, i) => {
+    const y = i * (height / lineCount) + mod;
+    return new Line({ y, canvasHeight: height });
+  });
+
+  lines.forEach((line) => {
+    line.draw(ctx);
+    line.update();
+  });
 };
