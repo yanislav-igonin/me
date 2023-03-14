@@ -8,7 +8,7 @@ class Line {
 
   constructor({ y, canvasHeight }: LineProps) {
     this.y = y;
-    this.canvasHeight = 0;
+    this.canvasHeight = canvasHeight;
   }
 
   draw(ctx: CanvasRenderingContext2D) {
@@ -32,7 +32,9 @@ export const synthwaveLandscape = (ctx: CanvasRenderingContext2D, frameCount: nu
   ctx.beginPath();
   ctx.moveTo(0, height);
 
-  while (true) {
-
-  }
+  // while (true) {
+    // const line = new Line({ y: height, canvasHeight: height });
+    // line.draw(ctx);
+    // line.update();
+  // }
 };
