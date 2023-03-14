@@ -13,6 +13,7 @@ const drawLine = (ctx: CanvasRenderingContext2D, from: Point, to: Point) => {
 type LineProps ={
   y: number;
   canvasHeight: number;
+  canvasWidth: number;
 }
 class Line {
   private y: number;
@@ -32,14 +33,14 @@ class Line {
   update() {
     const canvasHalf = this.canvasHeight / 2;
     if (canvasHalf < this.y - 10) {
-      this.y = 0;
+      this.y = this.canvasHeight;
       return;
     }
     this.y -= 10;
   }
 }
 
-const lineCount = 40;
+const lineCount = 1;
 
 export const synthwaveLandscape = (ctx: CanvasRenderingContext2D, frameCount: number) => {
   const height = ctx.canvas.height;
@@ -50,9 +51,12 @@ export const synthwaveLandscape = (ctx: CanvasRenderingContext2D, frameCount: nu
 
   const mod = frameCount % lineCount;
 
+  const halfHeight = height / 2;
+  const betweenLines = halfHeight / lineCount;
+
   const lines = Array.from({ length: lineCount }, (_, i) => {
-    const y = i * (height / lineCount) + mod;
-    return new Line({ y, canvasHeight: height });
+    const y = height - (i * betweenLines);
+    return new Line({ y, canvasHeight: height, canvasWidth: width });
   });
 
   lines.forEach((line) => {
