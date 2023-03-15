@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 type Point = {
   x: number;
   y: number;
@@ -15,7 +17,7 @@ type LineProps ={
   canvasHeight: number;
   canvasWidth: number;
 }
-class Line {
+class HorizontalLine {
   private y: number;
   private canvasHeight: number;
 
@@ -42,7 +44,19 @@ class Line {
 
 const lineCount = 10;
 
-let lines: Line[] = [];
+let horizontalLines: HorizontalLine[] = [];
+
+const onResize = () => {
+  horizontalLines = [];
+};
+if (typeof window !== 'undefined') {
+  window.addEventListener('resize', onResize);
+}
+
+const yWithAngle = (y: number, angle: number) => {
+  const radians = (Math.PI / 180) * angle;
+  return y + Math.sin(radians) * 10;
+};
 
 export const synthwaveLandscape = (ctx: CanvasRenderingContext2D, frameCount: number) => {
   const height = ctx.canvas.height;
@@ -53,15 +67,14 @@ export const synthwaveLandscape = (ctx: CanvasRenderingContext2D, frameCount: nu
 
   const halfHeight = height / 2;
   const betweenLines = halfHeight / lineCount;
-
-  if (lines.length === 0){
-    lines = Array.from({ length: lineCount }, (_, i) => {
-      const y = height - (i * betweenLines);
-      return new Line({ y, canvasHeight: height, canvasWidth: width });
+  if (horizontalLines.length === 0){
+    horizontalLines = Array.from({ length: lineCount }, (_, i) => {
+      const y = yWithAngle(height - (i * betweenLines), frameCount);
+      return new HorizontalLine({ y, canvasHeight: height, canvasWidth: width });
     });
   }
 
-  lines.forEach((line) => {
+  horizontalLines.forEach((line) => {
     line.draw(ctx);
     line.update();
   });
