@@ -61,7 +61,6 @@ export const synthwaveLandscape = (
   ctx.strokeStyle = 'black';
 
   const halfHeight = height / 2;
-  const spaceBetweenLines = halfHeight / lineCount;
   
   if (horizontalLines.length === 0) {
     horizontalLines = Array.from({ length: lineCount }, (_, i) => {
@@ -75,6 +74,6 @@ export const synthwaveLandscape = (
 
   horizontalLines.forEach((line) => {
     line.draw(ctx);
-    // line.update();
+    line.update();
   });
 };
