@@ -1,7 +1,4 @@
 import { Header } from '../Header';
-import { RetrowaveSun } from './RetrowaveSun';
-import s from './Layout.module.css';
-import { RetrowaveLandscape } from './RetrowaveLandscape';
 import Head from 'next/head';
 import { Metatags } from './Metatags';
 import { Canvas } from '../Canvas';
