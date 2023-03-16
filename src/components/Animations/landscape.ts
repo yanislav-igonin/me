@@ -17,10 +17,12 @@ type HorizontalLineProps = {
 class HorizontalLine {
   private y: number;
   private canvasHeight: number;
+  private canvasHalf: number;
 
   constructor({ y, canvasHeight }: HorizontalLineProps) {
     this.y = y;
     this.canvasHeight = canvasHeight;
+    this.canvasHalf = canvasHeight / 2;
   }
 
   draw(ctx: CanvasRenderingContext2D) {
@@ -30,15 +32,19 @@ class HorizontalLine {
   }
 
   update() {
-    const canvasHalf = this.canvasHeight / 2;
-    if (canvasHalf > this.y - 10) {
-      this.y = this.canvasHeight;
+    const { canvasHalf } = this;
+    if (this.canvasHeight < this.y) {
+      this.y = canvasHalf;
       return;
     }
-    this.y -= 2;
+    // based on the distance from the center of the canvas, the acceleration
+    // of the line is reduced
+    const distanceFromCenter = Math.abs(canvasHalf - this.y) + 1;
+    const acceleration = (distanceFromCenter / canvasHalf) * 3;
+    this.y += acceleration;
   }
 }
-
+Hi!  Thanks for reaching out, but I’ve found a new job recently :)
 const lineCount = 10;
 
 let horizontalLines: HorizontalLine[] = [];
