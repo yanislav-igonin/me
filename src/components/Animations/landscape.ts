@@ -44,7 +44,6 @@ class HorizontalLine {
     this.y += acceleration;
   }
 }
-Hi!  Thanks for reaching out, but I’ve found a new job recently :)
 const lineCount = 10;
 
 let horizontalLines: HorizontalLine[] = [];
