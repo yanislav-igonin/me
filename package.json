@@ -9,6 +9,7 @@
     "lint": "next lint --fix"
   },
   "dependencies": {
+    "@react-three/fiber": "^8.12.0",
     "next": "^13.0.0",
     "next-axiom": "^0.16.0",
     "react": "^18.2.0",

@@ -45,7 +45,7 @@ export const Cube = () => {
       width: window.innerWidth,
       height: window.innerHeight,
     };
-  }, [window]);
+  }, []);
 
   return <canvas ref={canvasRef} width={sizes.width} height={sizes.height} />;
 };
