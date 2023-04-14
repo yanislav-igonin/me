@@ -8,7 +8,7 @@ interface BoxProps {
 }
 
 export const Box: FC<BoxProps> = ({ position }) => {
-  const mesh = useRef<Mesh>();
+  const mesh = useRef<Mesh>(null);
 
   useFrame(() => {
     if (mesh.current) {
