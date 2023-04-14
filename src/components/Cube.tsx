@@ -1,51 +1,28 @@
-import React, { useRef, useEffect } from 'react';
-import * as THREE from 'three';
+// Box.tsx
+import React, { useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { Mesh } from 'three';
 
-export const Cube = () => {
-  const canvasRef = useRef(null);
+interface BoxProps {
+  position: [number, number, number];
+}
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const renderer = new THREE.WebGLRenderer({ canvas });
+export const Box: React.FC<BoxProps> = ({ position }) => {
+  const mesh = useRef<Mesh>();
 
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      canvas.clientWidth / canvas.clientHeight,
-      0.1,
-      1000
-    );
-    camera.position.z = 5;
+  useFrame(() => {
+    if (mesh.current) {
+      mesh.current.rotation.x += 1;
+      mesh.current.rotation.y += 1;
+      mesh.current.rotation.z += 1;
+    }
+  });
 
-    const scene = new THREE.Scene();
-
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    const animate = () => {
-      requestAnimationFrame(animate);
-
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-
-      renderer.render(scene, camera);
-    };
-
-    animate();
-  }, []);
-
-  let sizes = {
-    width: 0,
-    height:0,
-  };
-
-  useEffect(() => {
-    sizes = {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} width={sizes.width} height={sizes.height} />;
+  return (
+    <mesh ref={mesh} position={position}>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color={'orange'} />
+    </mesh>
+  );
 };
+

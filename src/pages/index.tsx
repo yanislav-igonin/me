@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Cube, Heading } from '@/components';
+import { Heading } from '@/components';
 import Image from 'next/image';
 
 const Home: NextPage = () => <>
@@ -13,11 +13,10 @@ const Home: NextPage = () => <>
       <Heading text="What's up guys?" />
     </div>
 
-    <Cube />
 
-    <div className='w-60 h-60 md:w-72 md:h-72 relative animate-spin-slow'>
+    {/* <div className='w-60 h-60 md:w-72 md:h-72 relative animate-spin-slow'>
       <Image fill src="/eblo.webp" alt="site owner's face" />
-    </div>
+    </div> */}
   </div>
 </>;
 
