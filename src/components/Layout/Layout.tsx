@@ -3,13 +3,31 @@ import Head from 'next/head';
 import { Canvas } from '@react-three/fiber';
 import { Metatags } from './Metatags';
 import { Box } from '../Cube';
+import { useEffect, useState } from 'react';
 
 type Props = {
   children: React.ReactNode;
 }
 
-export const Layout = ({ children }: Props) =>
-  <div>
+export const Layout = ({ children }: Props) => {
+  const [boxPosition, setBoxPosition] = useState<[number, number, number]>([0, 0, 0]);
+  
+  // change box position based on mouse position
+  useEffect(() => {
+    const onMouseMove = (e: MouseEvent) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      setBoxPosition([x * 4 - 2, -(y * 4 - 2), 0]);
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+    };
+  });
+
+  return <div>
     <Head>
       <Metatags />
     </Head>
@@ -20,13 +38,12 @@ export const Layout = ({ children }: Props) =>
 
       <div className='absolute inset-0 -z-10'>
         <Canvas>
-          <mesh>
-            <ambientLight />
-            <Box position={[0, 0, 0]} />
-          </mesh>
+          <ambientLight />
+          <Box position={boxPosition} />
         </Canvas>
       </div>
 
       {children}
     </main>
   </div>;
+};
