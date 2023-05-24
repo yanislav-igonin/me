@@ -2,7 +2,7 @@ import { Header } from '../Header';
 import Head from 'next/head';
 import { Canvas } from '@react-three/fiber';
 import { Metatags } from './Metatags';
-import { Box } from '../Cube';
+import { Cube } from '../Cube';
 import { useEffect, useState } from 'react';
 
 type Props = {
@@ -10,21 +10,30 @@ type Props = {
 }
 
 export const Layout = ({ children }: Props) => {
-  const [boxPosition, setBoxPosition] = useState<[number, number, number]>([0, 0, 0]);
+  // const [boxPosition, setBoxPosition] = useState<[number, number, number]>([0, 0, 0]);
+  const [boxesPosition, setBoxesPositions] = useState<[number, number, number][]>([
+    // [0, 0, 0],
+    [2, 0, 0],
+    [-2, 0, 0],
+    [0, 2, 0],
+    [0, -2, 0],
+    // [0, 0, 2],
+    [0, 0, -2],
+  ]);
   
   // change box position based on mouse position
   useEffect(() => {
-    const onMouseMove = (e: MouseEvent) => {
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-      setBoxPosition([x * 4 - 2, -(y * 4 - 2), 0]);
-    };
+    // const onMouseMove = (e: MouseEvent) => {
+    //   const x = e.clientX / window.innerWidth;
+    //   const y = e.clientY / window.innerHeight;
+    //   setBoxPosition([x * 4 - 2, -(y * 4 - 2), 0]);
+    // };
 
-    window.addEventListener('mousemove', onMouseMove);
+    // window.addEventListener('mousemove', onMouseMove);
 
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-    };
+    // return () => {
+    //   window.removeEventListener('mousemove', onMouseMove);
+    // };
   });
 
   return <div>
@@ -39,7 +48,7 @@ export const Layout = ({ children }: Props) => {
       <div className='absolute inset-0 -z-10'>
         <Canvas>
           <ambientLight />
-          <Box position={boxPosition} />
+          {boxesPosition.map((position, index) => <Cube key={index} position={position} />)}
         </Canvas>
       </div>
 

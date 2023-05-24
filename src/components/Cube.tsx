@@ -1,13 +1,13 @@
 // Box.tsx
 import { FC, useEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Mesh, LineSegments, EdgesGeometry, LineBasicMaterial } from 'three';
+import { Mesh, LineSegments } from 'three';
 
-interface BoxProps {
+interface CubeProps {
   position: [number, number, number];
 }
 
-export const Box: FC<BoxProps> = ({ position }) => {
+export const Cube: FC<CubeProps> = ({ position }) => {
   const boxRef = useRef<Mesh>(null);
   const edgesRef = useRef<LineSegments>(null);
 
