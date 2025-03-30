@@ -9,10 +9,10 @@
     "lint": "next lint --fix"
   },
   "dependencies": {
-    "next": "^13.0.0",
-    "next-axiom": "^0.16.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "next": "^15.2.4",
+    "next-axiom": "^1.9.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@types/node": "17.0.41",
