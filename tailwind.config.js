@@ -5,11 +5,6 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {
-      animation: {
-        'spin-slow': 'spin 1.5s linear infinite',
-      },
-    },
   },
   plugins: [],
   darkMode: 'class',
