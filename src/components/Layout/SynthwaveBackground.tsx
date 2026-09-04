@@ -147,8 +147,10 @@ void main() {
     float inPlane = step(0.0, u) * step(u, PLANE_WIDTH * W)
       * step(0.0, v) * step(v, PLANE_HEIGHT * H);
     if (inPlane > 0.5) {
-      // the ground ends exactly at the lower boundary of the gradient
-      float gridMask = 1.0 - smoothstep(bandBot - aa, bandBot + aa, p.y);
+      // the ground starts exactly at the upper boundary of the gradient:
+      // the plane's far edge projects above/below it depending on viewport
+      // height (a CSS-geometry quirk), so clip it to the band edge
+      float gridMask = smoothstep(bandTop - aa, bandTop + aa, p.y);
       // horizontal lines scroll toward the horizon at 49px/s
       float mh = mod(v + GRID_HALF_W + GRID_SPEED * fract(u_time), GRID_H_STEP);
       float covH = coverage(ringDist(mh, 2.0 * GRID_HALF_W, GRID_H_STEP),
