@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import "tailwindcss";
 
+/* class-based dark mode: the site toggles html.dark (see useTheme) and the
+   CSS-module overrides already key off html.dark */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --animation-spin-slow: spin 1.5s linear infinite;
 }

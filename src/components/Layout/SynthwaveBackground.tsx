@@ -44,10 +44,8 @@ const vec3 BAND_DARK     = vec3(1.0000, 0.0078, 0.7373); // #ff02bc, alpha 0.71
 const vec3 GRID_LIGHT    = vec3(0.8000, 0.3451, 0.3451); // #cc5858
 const vec3 GRID_DARK     = vec3(0.8118, 0.2000, 0.8510); // #CF33D9
 const vec3 SUN_LIGHT     = vec3(1.0000, 1.0000, 1.0000); // white lines
-// the old .line { background: #fff } (unlayered CSS) always beat the
-// tailwind dark:bg-orange-500 utility (cascade layer), so the lines stay
-// white in dark mode too
-const vec3 SUN_DARK      = vec3(1.0000, 1.0000, 1.0000);
+// original design intent: the sun lines are orange-500 in dark mode
+const vec3 SUN_DARK      = vec3(0.9765, 0.4510, 0.0863); // orange-500 #f97316
 
 // perspective + plane, ported from the old CSS
 const float PERSP = 360.0;   // perspective: 360px
@@ -117,7 +115,8 @@ void main() {
   // glow band: hard on-edge at 60%, then linear fade out to 75% of the block
   // (the CSS gradient's 0% stop clamps to 60% and fades to transparent at 75%)
   float bandTop = off + 0.6 * H;
-  float fade = clamp((off + 0.75 * H - p.y) / (0.15 * H), 0.0, 1.0);
+  float bandBot = off + 0.75 * H; // lower boundary of the gradient
+  float fade = clamp((bandBot - p.y) / (0.15 * H), 0.0, 1.0);
   float bandA = step(bandTop, p.y) * fade;
   col = mix(col, mix(col, BAND_LIGHT, 0.98), bandA * (1.0 - u_dark));
   col = mix(col, mix(col, BAND_DARK, 0.71), bandA * u_dark);
@@ -148,6 +147,8 @@ void main() {
     float inPlane = step(0.0, u) * step(u, PLANE_WIDTH * W)
       * step(0.0, v) * step(v, PLANE_HEIGHT * H);
     if (inPlane > 0.5) {
+      // the ground ends exactly at the lower boundary of the gradient
+      float gridMask = 1.0 - smoothstep(bandBot - aa, bandBot + aa, p.y);
       // horizontal lines scroll toward the horizon at 49px/s
       float mh = mod(v + GRID_HALF_W + GRID_SPEED * fract(u_time), GRID_H_STEP);
       float covH = coverage(ringDist(mh, 2.0 * GRID_HALF_W, GRID_H_STEP),
@@ -155,7 +156,7 @@ void main() {
       float mv = mod(u + GRID_HALF_W, GRID_V_STEP);
       float covV = coverage(ringDist(mv, 2.0 * GRID_HALF_W, GRID_V_STEP),
         GRID_HALF_W, aaU);
-      float grid = max(covH, covV);
+      float grid = max(covH, covV) * gridMask;
       col = mix(col, mix(GRID_LIGHT, GRID_DARK, u_dark), grid);
     }
   }
