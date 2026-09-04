@@ -1,6 +1,0 @@
-.background {
-  background: linear-gradient(#00000000 60%, #ff9057fa 0%, #00000000 75%);
-}
-html:global(.dark) .background {
-  background: linear-gradient(#00000000 60%, #ff02bcb5 0%, #00000000 75%);
-}
