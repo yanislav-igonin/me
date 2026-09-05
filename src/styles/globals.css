@@ -6,7 +6,21 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-	--animation-spin-slow: spin 1.5s linear infinite;
+	--ease-out-decay: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* click-triggered decaying spin: 2 full turns, easing out to a stop */
+@keyframes spin-decay {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(720deg);
+	}
+}
+
+.spin-decay {
+	animation: spin-decay 1.6s var(--ease-out-decay) both;
 }
 
 html,
