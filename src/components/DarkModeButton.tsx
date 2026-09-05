@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useTheme, Theme } from '../utils';
 
 const lightModePath = <path
@@ -18,18 +17,11 @@ const darkColor = 'text-black';
 
 export const DarkModeButton = () => {
   const [theme, setTheme] = useTheme();
-  const [color, setColor] = useState(darkColor);
-  const [path, setPath] = useState(lightModePath);
 
   const isDarkNow = theme === Theme.Dark;
   const nextTheme = isDarkNow ? Theme.Light : Theme.Dark;
-
-  useEffect(() => {
-    const nextPath = isDarkNow ? darkModePath : lightModePath;
-    setPath(nextPath);
-    const nextColor = isDarkNow ? lightColor : darkColor;
-    setColor(nextColor);
-  }, [isDarkNow]);
+  const path = isDarkNow ? darkModePath : lightModePath;
+  const color = isDarkNow ? lightColor : darkColor;
 
   return <svg
     onClick={() => setTheme(nextTheme)}
