@@ -28,7 +28,7 @@ const Projects: NextPage = () => (
 			<title>Projects</title>
 		</Head>
 
-		<div className="flex flex-col h-screen justify-center items-center">
+		<div className="flex flex-1 flex-col justify-center items-center">
 			{project.map((p) => (
 				<ProjectCard key={p.title} {...p} />
 			))}

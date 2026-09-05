@@ -8,14 +8,17 @@ type Props = {
 };
 
 export const Layout = ({ children }: Props) => (
-	<div>
+	// The shell is exactly one viewport tall and never scrolls itself:
+	// the header stays pinned, and <main> is the only scroll container
+	// (no-op on static pages, scrolls on content-heavy pages like /projects).
+	<div className="flex h-dvh flex-col overflow-hidden">
 		<Head>
 			<Metatags />
 		</Head>
 
 		<Header />
 
-		<main className={"flex h-screen justify-center items-center"}>
+		<main className="relative flex flex-1 min-h-0 flex-col overflow-y-auto">
 			<SynthwaveBackground />
 
 			{children}
