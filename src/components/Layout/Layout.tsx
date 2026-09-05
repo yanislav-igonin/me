@@ -1,24 +1,24 @@
-import Head from 'next/head';
-import { Header } from '../Header';
-import { Metatags } from './Metatags';
-import { SynthwaveBackground } from './SynthwaveBackground';
+import Head from "next/head";
+import { Header } from "../Header";
+import { Metatags } from "./Metatags";
+import { SynthwaveBackground } from "./SynthwaveBackground";
 
 type Props = {
-  children: React.ReactNode;
+	children: React.ReactNode;
 };
 
 export const Layout = ({ children }: Props) => (
-  <div>
-    <Head>
-      <Metatags />
-    </Head>
+	<div>
+		<Head>
+			<Metatags />
+		</Head>
 
-    <Header />
+		<Header />
 
-    <main className={'flex h-screen justify-center items-center'}>
-      <SynthwaveBackground />
+		<main className={"flex h-screen justify-center items-center"}>
+			<SynthwaveBackground />
 
-      {children}
-    </main>
-  </div>
+			{children}
+		</main>
+	</div>
 );

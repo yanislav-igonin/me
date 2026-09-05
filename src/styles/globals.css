@@ -6,22 +6,22 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --animation-spin-slow: spin 1.5s linear infinite;
+	--animation-spin-slow: spin 1.5s linear infinite;
 }
 
 html,
 body {
-  font-family:
-    "Press Start 2P",
-    -apple-system,
-    BlinkMacSystemFont,
-    Segoe UI,
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    Fira Sans,
-    Droid Sans,
-    Helvetica Neue,
-    sans-serif;
+	font-family:
+		"Press Start 2P",
+		-apple-system,
+		BlinkMacSystemFont,
+		Segoe UI,
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		Fira Sans,
+		Droid Sans,
+		Helvetica Neue,
+		sans-serif;
 }

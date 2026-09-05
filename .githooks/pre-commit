@@ -1,9 +1,16 @@
 #!/bin/sh
 # Pre-commit: run Biome (formatter + linter fixes) on the whole repo.
-npx biome check --write .
+# Factory-default settings; the CLI flags stand in for biome.json:
+#   - vcs flags: respect .gitignore (skip .next/, node_modules/)
+#   - tailwind directives: parse Tailwind v4 at-rules in CSS
+npx biome check --write \
+  --vcs-enabled=true --vcs-client-kind=git --vcs-use-ignore-file=true \
+  --css-parse-tailwind-directives=true .
 
 # Re-stage everything the formatter just changed.
 git add --all
 
 # Fail the commit if any unfixable lint/format errors remain.
-npx biome check .
+npx biome check \
+  --vcs-enabled=true --vcs-client-kind=git --vcs-use-ignore-file=true \
+  --css-parse-tailwind-directives=true .

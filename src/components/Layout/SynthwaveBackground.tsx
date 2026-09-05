@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import s from './SynthwaveBackground.module.css';
+import { useEffect, useRef } from "react";
+import s from "./SynthwaveBackground.module.css";
 
 /**
  * Fullscreen retrowave background rendered with raw WebGL.
@@ -186,160 +186,179 @@ void main() {
 }`;
 
 export const SynthwaveBackground = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+	const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    return initRenderer(canvas);
-  }, []);
+	useEffect(() => {
+		const canvas = canvasRef.current;
+		if (!canvas) return;
+		return initRenderer(canvas);
+	}, []);
 
-  return (
-    // biome-ignore lint/a11y/noAriaHiddenOnFocusable: decorative WebGL background, never interactive
-    <canvas ref={canvasRef} className={s.canvas} aria-hidden="true" />
-  );
+	return (
+		// biome-ignore lint/a11y/noAriaHiddenOnFocusable: decorative WebGL background, never interactive
+		<canvas ref={canvasRef} className={s.canvas} aria-hidden="true" />
+	);
 };
 
 function compile(gl: WebGLRenderingContext, type: number, src: string) {
-  const shader = gl.createShader(type)!;
-  gl.shaderSource(shader, src);
-  gl.compileShader(shader);
-  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    throw new Error(`shader compile failed: ${gl.getShaderInfoLog(shader)}`);
-  }
-  return shader;
+	const shader = gl.createShader(type);
+	if (!shader) {
+		throw new Error("shader creation failed");
+	}
+	gl.shaderSource(shader, src);
+	gl.compileShader(shader);
+	if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+		throw new Error(`shader compile failed: ${gl.getShaderInfoLog(shader)}`);
+	}
+	return shader;
 }
 
 function initRenderer(canvas: HTMLCanvasElement): () => void {
-  const gl = canvas.getContext('webgl', {
-    alpha: false,
-    antialias: false,
-    depth: false,
-    stencil: false,
-    powerPreference: 'low-power',
-    preserveDrawingBuffer: false,
-  }) as WebGLRenderingContext | null;
-  if (!gl) return () => {}; // no WebGL: page gradient fallback via CSS below
+	const gl = canvas.getContext("webgl", {
+		alpha: false,
+		antialias: false,
+		depth: false,
+		stencil: false,
+		powerPreference: "low-power",
+		preserveDrawingBuffer: false,
+	}) as WebGLRenderingContext | null;
+	if (!gl) return () => {}; // no WebGL: page gradient fallback via CSS below
 
-  let program: WebGLProgram;
-  let uniforms: Record<string, WebGLUniformLocation | null>;
-  let buffer: WebGLBuffer;
-  let raf = 0;
-  // the old fixed background block sat at its static position inside <main>,
-  // i.e. offset by the in-flow header height (differs on mobile, where the
-  // header wraps to two rows)
-  const parent = canvas.closest('main');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let headerOffset = HEADER_OFFSET;
-  const measureOffset = () => {
-    headerOffset = parent ? parent.getBoundingClientRect().top : HEADER_OFFSET;
-  };
+	let program: WebGLProgram;
+	let uniforms: Record<string, WebGLUniformLocation | null>;
+	let buffer: WebGLBuffer;
+	let raf = 0;
+	// the old fixed background block sat at its static position inside <main>,
+	// i.e. offset by the in-flow header height (differs on mobile, where the
+	// header wraps to two rows)
+	const parent = canvas.closest("main");
+	const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+	let headerOffset = HEADER_OFFSET;
+	const measureOffset = () => {
+		headerOffset = parent ? parent.getBoundingClientRect().top : HEADER_OFFSET;
+	};
 
-  const start = () => {
-    program = gl.createProgram()!;
-    gl.attachShader(program, compile(gl, gl.VERTEX_SHADER, VERT));
-    gl.attachShader(program, compile(gl, gl.FRAGMENT_SHADER, FRAG));
-    gl.linkProgram(program);
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-      throw new Error(`program link failed: ${gl.getProgramInfoLog(program)}`);
-    }
-    // biome-ignore lint/correctness/useHookAtTopLevel: gl.useProgram is a WebGL API call, not a React hook
-    gl.useProgram(program);
+	const start = () => {
+		const createdProgram = gl.createProgram();
+		if (!createdProgram) {
+			throw new Error("program creation failed");
+		}
+		program = createdProgram;
+		gl.attachShader(program, compile(gl, gl.VERTEX_SHADER, VERT));
+		gl.attachShader(program, compile(gl, gl.FRAGMENT_SHADER, FRAG));
+		gl.linkProgram(program);
+		if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+			throw new Error(`program link failed: ${gl.getProgramInfoLog(program)}`);
+		}
+		// biome-ignore lint/correctness/useHookAtTopLevel: gl.useProgram is a WebGL API call, not a React hook
+		gl.useProgram(program);
 
-    buffer = gl.createBuffer()!;
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-    const loc = gl.getAttribLocation(program, 'a_pos');
-    gl.enableVertexAttribArray(loc);
-    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+		const createdBuffer = gl.createBuffer();
+		if (!createdBuffer) {
+			throw new Error("buffer creation failed");
+		}
+		buffer = createdBuffer;
+		gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+		gl.bufferData(
+			gl.ARRAY_BUFFER,
+			new Float32Array([-1, -1, 3, -1, -1, 3]),
+			gl.STATIC_DRAW,
+		);
+		const loc = gl.getAttribLocation(program, "a_pos");
+		gl.enableVertexAttribArray(loc);
+		gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
-    uniforms = {
-      res: gl.getUniformLocation(program, 'u_res'),
-      dpr: gl.getUniformLocation(program, 'u_dpr'),
-      time: gl.getUniformLocation(program, 'u_time'),
-      dark: gl.getUniformLocation(program, 'u_dark'),
-      off: gl.getUniformLocation(program, 'u_off'),
-    };
-  };
+		uniforms = {
+			res: gl.getUniformLocation(program, "u_res"),
+			dpr: gl.getUniformLocation(program, "u_dpr"),
+			time: gl.getUniformLocation(program, "u_time"),
+			dark: gl.getUniformLocation(program, "u_dark"),
+			off: gl.getUniformLocation(program, "u_off"),
+		};
+	};
 
-  const draw = (timeSec: number) => {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const w = Math.round(canvas.clientWidth * dpr);
-    const h = Math.round(canvas.clientHeight * dpr);
-    if (canvas.width !== w || canvas.height !== h) {
-      canvas.width = w;
-      canvas.height = h;
-    }
-    gl.viewport(0, 0, w, h);
-    gl.uniform2f(uniforms.res, w, h);
-    gl.uniform1f(uniforms.dpr, dpr);
-    gl.uniform1f(uniforms.time, timeSec);
-    gl.uniform1f(uniforms.dark, window.document.documentElement.classList.contains('dark') ? 1 : 0);
-    gl.uniform1f(uniforms.off, headerOffset);
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
-  };
+	const draw = (timeSec: number) => {
+		const dpr = Math.min(window.devicePixelRatio || 1, 2);
+		const w = Math.round(canvas.clientWidth * dpr);
+		const h = Math.round(canvas.clientHeight * dpr);
+		if (canvas.width !== w || canvas.height !== h) {
+			canvas.width = w;
+			canvas.height = h;
+		}
+		gl.viewport(0, 0, w, h);
+		gl.uniform2f(uniforms.res, w, h);
+		gl.uniform1f(uniforms.dpr, dpr);
+		gl.uniform1f(uniforms.time, timeSec);
+		gl.uniform1f(
+			uniforms.dark,
+			window.document.documentElement.classList.contains("dark") ? 1 : 0,
+		);
+		gl.uniform1f(uniforms.off, headerOffset);
+		gl.drawArrays(gl.TRIANGLES, 0, 3);
+	};
 
-  const loop = () => {
-    draw(performance.now() / 1000);
-    raf = requestAnimationFrame(loop);
-  };
+	const loop = () => {
+		draw(performance.now() / 1000);
+		raf = requestAnimationFrame(loop);
+	};
 
-  const startLoop = () => {
-    cancelAnimationFrame(raf);
-    if (reducedMotion.matches) {
-      draw(0); // static frame; redrawn on resize/theme change
-    } else {
-      loop();
-    }
-  };
+	const startLoop = () => {
+		cancelAnimationFrame(raf);
+		if (reducedMotion.matches) {
+			draw(0); // static frame; redrawn on resize/theme change
+		} else {
+			loop();
+		}
+	};
 
-  const onResize = () => {
-    measureOffset();
-    startLoop();
-  };
-  const onThemeChange = () => {
-    if (reducedMotion.matches) draw(0);
-  };
+	const onResize = () => {
+		measureOffset();
+		startLoop();
+	};
+	const onThemeChange = () => {
+		if (reducedMotion.matches) draw(0);
+	};
 
-  const observer = new MutationObserver(onThemeChange);
-  observer.observe(window.document.documentElement, {
-    attributes: true,
-    attributeFilter: ['class'],
-  });
-  // the header height depends on the retro webfont, which loads after mount
-  const header = parent?.previousElementSibling ?? null;
-  const headerObserver = header && 'ResizeObserver' in window ? new ResizeObserver(onResize) : null;
-  if (headerObserver && header) headerObserver.observe(header);
-  document.fonts?.ready.then(() => {
-    measureOffset();
-    if (reducedMotion.matches) draw(0);
-  });
-  reducedMotion.addEventListener?.('change', onResize);
-  window.addEventListener('resize', onResize);
+	const observer = new MutationObserver(onThemeChange);
+	observer.observe(window.document.documentElement, {
+		attributes: true,
+		attributeFilter: ["class"],
+	});
+	// the header height depends on the retro webfont, which loads after mount
+	const header = parent?.previousElementSibling ?? null;
+	const headerObserver =
+		header && "ResizeObserver" in window ? new ResizeObserver(onResize) : null;
+	if (headerObserver && header) headerObserver.observe(header);
+	document.fonts?.ready.then(() => {
+		measureOffset();
+		if (reducedMotion.matches) draw(0);
+	});
+	reducedMotion.addEventListener?.("change", onResize);
+	window.addEventListener("resize", onResize);
 
-  const onContextLost = (e: Event) => {
-    e.preventDefault();
-    cancelAnimationFrame(raf);
-  };
-  const onContextRestored = () => {
-    start();
-    startLoop();
-  };
-  canvas.addEventListener('webglcontextlost', onContextLost);
-  canvas.addEventListener('webglcontextrestored', onContextRestored);
+	const onContextLost = (e: Event) => {
+		e.preventDefault();
+		cancelAnimationFrame(raf);
+	};
+	const onContextRestored = () => {
+		start();
+		startLoop();
+	};
+	canvas.addEventListener("webglcontextlost", onContextLost);
+	canvas.addEventListener("webglcontextrestored", onContextRestored);
 
-  start();
-  measureOffset();
-  startLoop();
+	start();
+	measureOffset();
+	startLoop();
 
-  return () => {
-    cancelAnimationFrame(raf);
-    observer.disconnect();
-    headerObserver?.disconnect();
-    reducedMotion.removeEventListener?.('change', onResize);
-    window.removeEventListener('resize', onResize);
-    canvas.removeEventListener('webglcontextlost', onContextLost);
-    canvas.removeEventListener('webglcontextrestored', onContextRestored);
-    gl.getExtension('WEBGL_lose_context')?.loseContext();
-  };
+	return () => {
+		cancelAnimationFrame(raf);
+		observer.disconnect();
+		headerObserver?.disconnect();
+		reducedMotion.removeEventListener?.("change", onResize);
+		window.removeEventListener("resize", onResize);
+		canvas.removeEventListener("webglcontextlost", onContextLost);
+		canvas.removeEventListener("webglcontextrestored", onContextRestored);
+		gl.getExtension("WEBGL_lose_context")?.loseContext();
+	};
 }

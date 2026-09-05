@@ -1,15 +1,15 @@
 .canvas {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -10;
-  display: block;
-  /* static fallback for devices without WebGL: light sky gradient */
-  background: linear-gradient(#fda4af, #fed7aa);
+	position: fixed;
+	inset: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -10;
+	display: block;
+	/* static fallback for devices without WebGL: light sky gradient */
+	background: linear-gradient(#fda4af, #fed7aa);
 }
 
 /* biome-ignore lint/correctness/noUnknownPseudoClass: :global() is CSS Modules syntax, not a pseudo-class */
 html:global(.dark) .canvas {
-  background: linear-gradient(#581c87, #292524);
+	background: linear-gradient(#581c87, #292524);
 }
