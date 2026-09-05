@@ -1,4 +1,5 @@
-export const Metatags = () => <>
+export const Metatags = () => (
+  <>
     {/* Primary Meta Tags */}
     <meta name="title" content="h0b0 dev station" />
     <meta name="description" content="Much dev, so synthwave, very css." />
@@ -22,4 +23,5 @@ export const Metatags = () => <>
     <meta property="twitter:title" content="h0b0 dev station" />
     <meta property="twitter:description" content="Much dev, so synthwave, very css." />
     <meta property="twitter:image" content="https://h0b0.dev/eblo.webp" />
-</>;
+  </>
+);

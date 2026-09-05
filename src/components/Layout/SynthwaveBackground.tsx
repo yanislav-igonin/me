@@ -194,7 +194,10 @@ export const SynthwaveBackground = () => {
     return initRenderer(canvas);
   }, []);
 
-  return <canvas ref={canvasRef} className={s.canvas} aria-hidden="true" />;
+  return (
+    // biome-ignore lint/a11y/noAriaHiddenOnFocusable: decorative WebGL background, never interactive
+    <canvas ref={canvasRef} className={s.canvas} aria-hidden="true" />
+  );
 };
 
 function compile(gl: WebGLRenderingContext, type: number, src: string) {
@@ -240,6 +243,7 @@ function initRenderer(canvas: HTMLCanvasElement): () => void {
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
       throw new Error(`program link failed: ${gl.getProgramInfoLog(program)}`);
     }
+    // biome-ignore lint/correctness/useHookAtTopLevel: gl.useProgram is a WebGL API call, not a React hook
     gl.useProgram(program);
 
     buffer = gl.createBuffer()!;
@@ -270,8 +274,7 @@ function initRenderer(canvas: HTMLCanvasElement): () => void {
     gl.uniform2f(uniforms.res, w, h);
     gl.uniform1f(uniforms.dpr, dpr);
     gl.uniform1f(uniforms.time, timeSec);
-    gl.uniform1f(uniforms.dark,
-      window.document.documentElement.classList.contains('dark') ? 1 : 0);
+    gl.uniform1f(uniforms.dark, window.document.documentElement.classList.contains('dark') ? 1 : 0);
     gl.uniform1f(uniforms.off, headerOffset);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
@@ -305,8 +308,7 @@ function initRenderer(canvas: HTMLCanvasElement): () => void {
   });
   // the header height depends on the retro webfont, which loads after mount
   const header = parent?.previousElementSibling ?? null;
-  const headerObserver = header && 'ResizeObserver' in window
-    ? new ResizeObserver(onResize) : null;
+  const headerObserver = header && 'ResizeObserver' in window ? new ResizeObserver(onResize) : null;
   if (headerObserver && header) headerObserver.observe(header);
   document.fonts?.ready.then(() => {
     measureOffset();

@@ -1,13 +1,13 @@
-import { Header } from '../Header';
 import Head from 'next/head';
+import { Header } from '../Header';
 import { Metatags } from './Metatags';
 import { SynthwaveBackground } from './SynthwaveBackground';
 
 type Props = {
   children: React.ReactNode;
-}
+};
 
-export const Layout = ({ children }: Props) =>
+export const Layout = ({ children }: Props) => (
   <div>
     <Head>
       <Metatags />
@@ -20,4 +20,5 @@ export const Layout = ({ children }: Props) =>
 
       {children}
     </main>
-  </div>;
+  </div>
+);

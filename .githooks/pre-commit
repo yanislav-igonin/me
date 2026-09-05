@@ -1,0 +1,9 @@
+#!/bin/sh
+# Pre-commit: run Biome (formatter + linter fixes) on the whole repo.
+npx biome check --write .
+
+# Re-stage everything the formatter just changed.
+git add --all
+
+# Fail the commit if any unfixable lint/format errors remain.
+npx biome check .

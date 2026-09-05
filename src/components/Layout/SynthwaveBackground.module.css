@@ -9,6 +9,7 @@
   background: linear-gradient(#fda4af, #fed7aa);
 }
 
+/* biome-ignore lint/correctness/noUnknownPseudoClass: :global() is CSS Modules syntax, not a pseudo-class */
 html:global(.dark) .canvas {
   background: linear-gradient(#581c87, #292524);
 }
