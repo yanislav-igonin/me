@@ -12,7 +12,7 @@
 		"lint": "biome check --vcs-enabled=true --vcs-client-kind=git --vcs-use-ignore-file=true --css-parse-tailwind-directives=true .",
 		"lint:fix": "npm run lint -- --write",
 		"format": "biome format --write .",
-		"prepare": "git config core.hooksPath .githooks"
+		"prepare": "git config core.hooksPath .githooks || exit 0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.12",
