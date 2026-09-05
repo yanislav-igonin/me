@@ -1,0 +1,29 @@
+---
+import { initRenderer } from "../../scripts/synthwave";
+---
+
+<canvas class="canvas" aria-hidden="true"></canvas>
+
+<style>
+	.canvas {
+		position: fixed;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -10;
+		display: block;
+		/* static fallback for devices without WebGL: light sky gradient */
+		background: linear-gradient(#fda4af, #fed7aa);
+	}
+
+	:global(html.dark) .canvas {
+		background: linear-gradient(#581c87, #292524);
+	}
+</style>
+
+<script>
+	import { initRenderer } from "../../scripts/synthwave";
+
+	const canvas = document.querySelector<HTMLCanvasElement>("canvas.canvas");
+	if (canvas) initRenderer(canvas);
+</script>

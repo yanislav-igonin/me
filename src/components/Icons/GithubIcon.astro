@@ -1,0 +1,14 @@
+---
+const { path } = Astro.props as { path: string };
+---
+
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	width="32"
+	height="32"
+	viewBox="0 0 24 24"
+	aria-hidden="true"
+	class="dark:fill-white hover:fill-rose-500 dark:hover:fill-rose-500"
+>
+	<path d={path} />
+</svg>

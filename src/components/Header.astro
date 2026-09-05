@@ -1,0 +1,48 @@
+---
+import DarkModeButton from "./DarkModeButton.astro";
+import { GithubIcon, LinkedInIcon } from "./Icons";
+
+const pages = [
+	{ name: "Home", href: "/" },
+	{ name: "About", href: "/about" },
+	{ name: "Projects", href: "/projects" },
+];
+---
+
+<header class="relative w-full">
+	<ul class="flex p-2 items-start flex-wrap">
+		{
+			pages.map((page) => (
+				<li class="p-2">
+					<a
+						href={page.href}
+						class="text-lg dark:text-white font-bold hover:text-rose-500 dark:hover:text-rose-500"
+					>
+						{page.name}
+					</a>
+				</li>
+			))
+		}
+		<li class="p-2">
+			<a
+				href="https://github.com/yanislav-igonin/me"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<GithubIcon />
+			</a>
+		</li>
+		<li class="p-2">
+			<a
+				href="https://www.linkedin.com/in/yanislav-igonin"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<LinkedInIcon />
+			</a>
+		</li>
+		<li class="absolute right-0 pr-2">
+			<DarkModeButton />
+		</li>
+	</ul>
+</header>

@@ -8,12 +8,9 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
+# astro build output and generated types
+/dist/
+/.astro/
 
 # misc
 .DS_Store

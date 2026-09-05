@@ -1,0 +1,33 @@
+---
+import Heading from "./Heading.astro";
+import { ExternalLink, GithubIcon } from "./Icons";
+import Paragraph from "./Paragraph.astro";
+
+type Props = {
+	title: string;
+	text: string;
+	github: string;
+	live: string;
+};
+
+const { title, text, github, live } = Astro.props;
+---
+
+<div
+	class="border border-rose-300 mb-8 p-2 w-11/12 md:w-1/2 bg-white dark:bg-slate-500 rounded-md md:hover:scale-125 duration-100"
+>
+	<div class="w-full p-4">
+		<div class="text-center">
+			<Heading text={title} />
+			<Paragraph text={text} />
+		</div>
+		<div class="flex flex-row items-center justify-evenly w-full mt-6">
+			<a href={github} target="_blank" rel="noopener noreferrer">
+				<GithubIcon />
+			</a>
+			<a href={live} target="_blank" rel="noopener noreferrer">
+				<ExternalLink />
+			</a>
+		</div>
+	</div>
+</div>

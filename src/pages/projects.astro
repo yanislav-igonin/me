@@ -1,0 +1,31 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import Layout from "../layouts/Layout.astro";
+
+const projects = [
+	{
+		title: "IP Crawler",
+		text: "List of live IP addresses that updates in real-time.",
+		github: "https://github.com/yanislav-igonin/ip-crawler-frontend",
+		live: "https://ips.h0b0.dev/",
+	},
+	// {
+	//   title: 'Micrach',
+	//   text: 'Single board imageboard',
+	//   github: 'https://github.com/yanislav-igonin/micrach',
+	//   live: 'https://micrach.igonin.dev/',
+	// },
+	{
+		title: "Face Fucker Bot",
+		text: "Telegram bot that uses LQR to fuck up images",
+		github: "https://github.com/yanislav-igonin/face-fucker-bot",
+		live: "https://t.me/face_fucker_bot",
+	},
+];
+---
+
+<Layout title="Projects">
+	<div class="flex flex-1 flex-col justify-center items-center">
+		{projects.map((project) => <ProjectCard {...project} />)}
+	</div>
+</Layout>

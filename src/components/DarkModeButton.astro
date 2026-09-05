@@ -1,0 +1,56 @@
+---
+// Theme toggle without React: two inline SVGs swapped by the html.dark class,
+// one tiny inline script persists the choice to the same localStorage key
+// ("theme") the old useTheme hook used, so returning visitors keep their theme.
+---
+
+<button
+	id="theme-toggle"
+	type="button"
+	aria-label="Toggle dark mode"
+	class="h-10 w-10 cursor-pointer text-black dark:text-white hover:text-rose-500"
+>
+	<!-- light mode: moon (click to go dark) -->
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		class="h-10 w-10 dark:hidden"
+		fill="none"
+		viewBox="0 0 24 24"
+		stroke="currentColor"
+		aria-hidden="true"
+	>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			stroke-width="2"
+			d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+		></path>
+	</svg>
+	<!-- dark mode: sun (click to go light) -->
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		class="hidden h-10 w-10 dark:block"
+		fill="none"
+		viewBox="0 0 24 24"
+		stroke="currentColor"
+		aria-hidden="true"
+	>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			stroke-width="2"
+			d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+		></path>
+	</svg>
+</button>
+
+<script is:inline>
+	(() => {
+		document
+			.getElementById("theme-toggle")
+			?.addEventListener("click", () => {
+				const dark = document.documentElement.classList.toggle("dark");
+				localStorage.theme = dark ? "dark" : "light";
+			});
+	})();
+</script>

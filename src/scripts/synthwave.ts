@@ -1,6 +1,3 @@
-import { useEffect, useRef } from "react";
-import s from "./SynthwaveBackground.module.css";
-
 /**
  * Fullscreen retrowave background rendered with raw WebGL.
  *
@@ -185,21 +182,6 @@ void main() {
   gl_FragColor = vec4(col, 1.0);
 }`;
 
-export const SynthwaveBackground = () => {
-	const canvasRef = useRef<HTMLCanvasElement>(null);
-
-	useEffect(() => {
-		const canvas = canvasRef.current;
-		if (!canvas) return;
-		return initRenderer(canvas);
-	}, []);
-
-	return (
-		// biome-ignore lint/a11y/noAriaHiddenOnFocusable: decorative WebGL background, never interactive
-		<canvas ref={canvasRef} className={s.canvas} aria-hidden="true" />
-	);
-};
-
 function compile(gl: WebGLRenderingContext, type: number, src: string) {
 	const shader = gl.createShader(type);
 	if (!shader) {
@@ -213,7 +195,7 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
 	return shader;
 }
 
-function initRenderer(canvas: HTMLCanvasElement): () => void {
+export function initRenderer(canvas: HTMLCanvasElement): () => void {
 	const gl = canvas.getContext("webgl", {
 		alpha: false,
 		antialias: false,
@@ -250,7 +232,6 @@ function initRenderer(canvas: HTMLCanvasElement): () => void {
 		if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
 			throw new Error(`program link failed: ${gl.getProgramInfoLog(program)}`);
 		}
-		// biome-ignore lint/correctness/useHookAtTopLevel: gl.useProgram is a WebGL API call, not a React hook
 		gl.useProgram(program);
 
 		const createdBuffer = gl.createBuffer();

@@ -1,0 +1,66 @@
+---
+import Header from "../components/Header.astro";
+import SynthwaveBackground from "../components/Layout/SynthwaveBackground.astro";
+import "../styles/globals.css";
+
+type Props = {
+	title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="/favicon.ico" />
+		<title>{title}</title>
+
+		<!-- Primary Meta Tags -->
+		<meta name="title" content="h0b0 dev station" />
+		<meta name="description" content="Much dev, so synthwave, very css." />
+		<meta name="keywords" content="h0b0,developer" />
+		<meta name="robots" content="index, follow" />
+		<meta name="language" content="English" />
+		<meta name="author" content="Yanislav Igonin" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://h0b0.dev" />
+		<meta property="og:title" content="h0b0 dev station" />
+		<meta property="og:description" content="Much dev, so synthwave, very css." />
+		<meta property="og:image" content="https://h0b0.dev/eblo.webp" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://h0b0.dev" />
+		<meta property="twitter:title" content="h0b0 dev station" />
+		<meta property="twitter:description" content="Much dev, so synthwave, very css." />
+		<meta property="twitter:image" content="https://h0b0.dev/eblo.webp" />
+
+		<!-- class-based dark mode: apply the stored theme before first paint, so
+		     there is no flash (see DarkModeButton; default is dark) -->
+		<script is:inline>
+			(() => {
+				document.documentElement.classList.toggle(
+					"dark",
+					localStorage.theme !== "light",
+				);
+			})();
+		</script>
+	</head>
+
+	<!-- The shell is exactly one viewport tall and never scrolls itself:
+	     the header stays pinned, and <main> is the only scroll container
+	     (no-op on static pages, scrolls on content-heavy pages like /projects). -->
+	<body class="flex h-dvh flex-col overflow-hidden">
+		<Header />
+
+		<main class="relative flex flex-1 min-h-0 flex-col overflow-y-auto">
+			<SynthwaveBackground />
+			<slot />
+		</main>
+	</body>
+</html>
